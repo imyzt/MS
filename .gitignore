@@ -4,6 +4,7 @@
 .mvn/
 mvnw
 mvnw.cmd
+ms.log
 
 ### STS ###
 .apt_generated
