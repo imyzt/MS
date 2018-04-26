@@ -11,17 +11,17 @@ public class RetResult<T> {
     /**
      * 响应码
      */
-    public int code;
+    private int code;
 
     /**
      * 响应消息
      */
-    public String msg;
+    private String msg;
 
     /**
      * 响应数据
      */
-    public T data;
+    private T data;
 
     public int getCode() {
         return code;
@@ -38,7 +38,7 @@ public class RetResult<T> {
      * @return
      */
     public RetResult<T> setCode(RetCode retCode) {
-        this.code = retCode.code;
+        this.code = retCode.getCode();
         return this;
     }
 
