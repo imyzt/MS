@@ -54,6 +54,15 @@
             <version>2.2.0</version>
         </dependency>
 		<!--mybatis plus end-->
+
+        <!--druid start-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.29</version>
+        </dependency>
+        <!--druid end-->
+
 	</dependencies>
 
 	<build>
