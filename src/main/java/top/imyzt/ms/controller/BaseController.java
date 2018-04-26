@@ -1,7 +1,15 @@
 package top.imyzt.ms.controller;
 
+import cn.hutool.extra.servlet.ServletUtil;
+import com.baomidou.mybatisplus.plugins.Page;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import top.imyzt.ms.core.page.PageFactory;
 import top.imyzt.ms.core.ret.RetCode;
 import top.imyzt.ms.core.ret.RetResult;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * @author: imyzt
@@ -106,6 +114,14 @@ public abstract class BaseController {
         return new RetResult<T>().setCode(RetCode.UNAUTHORIZED).setMsg(UNAUTHORIZED);
     }
 
+    /**
+     * 默认分页方式
+     * @param <T>
+     * @return
+     */
+    protected<T> Page<T> defaultPage(){
+        return new PageFactory<T>().defaultPage();
+    }
 
 
 }
