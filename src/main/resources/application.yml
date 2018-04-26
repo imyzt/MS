@@ -32,6 +32,11 @@ spring:
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       # 合并多个DruidDataSource的监控数据
       #useGlobalDataSourceStat: true
+  mvc:
+    #访问一个不存在的页面时抛出异常
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
 
 
 mybatis-plus:
