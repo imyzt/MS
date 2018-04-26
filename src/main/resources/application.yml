@@ -33,7 +33,7 @@ spring:
       # 合并多个DruidDataSource的监控数据
       #useGlobalDataSourceStat: true
   mvc:
-    #访问一个不存在的页面时抛出异常
+    #访问一个不存在的页面时抛出异常,默认关闭
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
@@ -51,3 +51,10 @@ mybatis-plus:
     cache-enabled: true #配置的缓存的全局开关
     lazyLoadingEnabled: true #延时加载的开关
     multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+
+#日志相关
+logging:
+  level.root: info
+  level.top.imyzt.ms: debug
+  path: logs/
+  file:  ms.log
