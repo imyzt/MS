@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author: imyzt
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @date: 2018/4/26 09:41
  * @description: mybatis-plus配置文件
  */
+@EnableTransactionManagement
 @Configuration                  //标识此类为配置文件类
 @MapperScan("top.imyzt.ms.dao") //mybatis-plus扫描Mapper.java
 public class MybatisPlusConfig {
