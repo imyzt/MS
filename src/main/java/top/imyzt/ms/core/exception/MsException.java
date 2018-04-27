@@ -23,11 +23,11 @@ public class MsException extends RuntimeException{
 
     /**
      * 自定义异常02
-     * @param msg 异常信息,错误码默认为500
+     * @param msg 异常信息,错误码默认为400
      */
     public MsException(String msg) {
         super(msg);
-        this.code = 500;
+        this.code = 400;
     }
 
     /**
