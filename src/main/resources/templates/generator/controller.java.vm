@@ -81,8 +81,8 @@ public class ${table.controllerName} {
      */
     @PostMapping(value = "/${table.entityPath}")
     public RetResult<${entity}> insert(${entity} ${table.entityPath}) {
-        if (${table.entityPath}Service.insert(entity)) {
-            return ok("新增成功", entity);
+        if (${table.entityPath}Service.insert(${table.entityPath})) {
+            return ok("新增成功", ${table.entityPath});
         }
         return faln("新增失败");
     }
@@ -115,8 +115,8 @@ public class ${table.controllerName} {
      */
     @PutMapping(value = "/${table.entityPath}")
     public RetResult<${entity}> updateById(${entity} ${table.entityPath}) {
-        if (${table.entityPath}Service.updateById(entity)) {
-            return ok("修改成功", entity);
+        if (${table.entityPath}Service.updateById(${table.entityPath})) {
+            return ok("修改成功", ${table.entityPath});
         }
         return faln("修改失败");
     }
