@@ -34,7 +34,7 @@ public class SwaggerConfig {
                 .groupName("默认分组")
                 .select()
                 //控制层所在的包
-                .apis(RequestHandlerSelectors.basePackage("top.imyzt.ms.controller"))
+                .apis(RequestHandlerSelectors.basePackage("top.imyzt.ms"))
                 .paths(PathSelectors.any())
                 .build();
     }
