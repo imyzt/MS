@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @Configuration                  //标识此类为配置文件类
-@MapperScan("top.imyzt.ms.dao") //mybatis-plus扫描Mapper.java
+@MapperScan("top.imyzt.ms") //mybatis-plus扫描Mapper.java
 public class MybatisPlusConfig {
 
     /**

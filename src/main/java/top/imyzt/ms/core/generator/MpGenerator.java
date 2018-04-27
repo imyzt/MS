@@ -33,7 +33,7 @@ public class MpGenerator {
         // 策略配置
         mpg.setStrategy(strategyConfig());
         // 包配置
-        mpg.setPackageInfo(packageConfig("top.imyzt.ms", "test"));
+        mpg.setPackageInfo(packageConfig("top.imyzt.ms", "system"));
         //自定义模板配置
         mpg.setTemplate(template());
         // 注入自定义配置
@@ -110,7 +110,7 @@ public class MpGenerator {
         StrategyConfig strategy = new StrategyConfig();
         //strategy.setTablePrefix("beautiful_");// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "test" }); // 需要生成的表
+        strategy.setInclude(new String[] { "system_log" }); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 字段名生成策略
         strategy.setNaming(NamingStrategy.underline_to_camel);
