@@ -1,0 +1,127 @@
+package ${package.Controller};
+
+import io.swagger.annotations.Api;
+import top.imyzt.ms.core.ret.RetResult;
+import com.baomidou.mybatisplus.plugins.Page;
+import ${package.Service}.${table.serviceName};
+import org.springframework.beans.factory.annotation.Autowired;
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.*;
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+
+/**
+ * @author: ${author}
+ * @date: ${date}
+ * @description: $!{table.comment} 前端控制器
+ */
+@Api("$!{table.comment}")
+#if(${restControllerStyle})
+@RestController
+#else
+@Controller
+#end
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+#if(${kotlin})
+class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
+
+#else
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} {
+#end
+
+    @Autowired
+    private ${table.serviceName} service;
+
+    /**
+     * <p>
+     *     获取$!{table.comment}列表 ${abc}
+     * </p>
+     *
+     * @author: ${author}
+     * @date: ${date}
+     * @param keyword 查询参数
+     */
+    @GetMapping(value = {"/${table.entityPath}", "/list"})
+    public Page<${entity}> selectList(String keyword) {
+        Page<${entity}> defaultPage = defaultPage();
+        Page<${entity}> page = service.selectPage(defaultPage);
+        return page;
+    }
+
+    /**
+     * <p>
+     *     查询详情
+     * </p>
+     *
+     * @author: ${author}
+     * @date: ${date}
+     * @param id 编号
+     */
+    @GetMapping(value = "/${table.entityPath}/{id}")
+    public RetResult<${entity}> selectById(@PathVariable("id") Integer id) {
+        return service.selectById(id));
+    }
+
+    /**
+     * <p>
+     *     新增$!{table.comment}
+     * </p>
+     *
+     * @author: ${author}
+     * @date: ${date}
+     * @param ${entity} $!{table.comment}
+     */
+    @PostMapping(value = "/${table.entityPath}")
+    public RetResult<${entity}> insert(${entity} entity) {
+        if (service.insert(entity)) {
+            return ok("新增成功", entity);
+        }
+        return faln("新增失败");
+    }
+
+    /**
+     * <p>
+     *     删除$!{table.comment}
+     * </p>
+     *
+     * @author: ${author}
+     * @date: ${date}
+     * @param id 编号
+     */
+    @DeleteMapping(value = "/${table.entityPath}/{id}")
+    public RetResult<${entity}> deleteById(@PathVariable("id") Integer id) {
+        if (service.deleteById(entity)) {
+            return ok("删除成功", entity);
+        }
+        return faln("删除失败");
+    }
+
+    /**
+     * <p>
+     *     修改$!{table.comment}
+     * </p>
+     *
+     * @author: ${author}
+     * @date: ${date}
+     * @param ${entity} $!{table.comment}
+     */
+    @PutMapping(value = "/${table.entityPath}")
+    public RetResult<${entity}> updateById(${entity} entity) {
+        if (service.updateById(entity)) {
+            return ok("修改成功", entity);
+        }
+        return faln("修改失败");
+    }
+
+
+
+}
+
+#end
