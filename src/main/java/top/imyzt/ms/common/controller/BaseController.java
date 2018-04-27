@@ -1,4 +1,4 @@
-package top.imyzt.ms.controller;
+package top.imyzt.ms.common.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import top.imyzt.ms.core.page.PageFactory;
