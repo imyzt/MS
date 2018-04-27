@@ -3,7 +3,7 @@ package ${package.Controller};
 import io.swagger.annotations.Api;
 import top.imyzt.ms.core.ret.RetResult;
 import com.baomidou.mybatisplus.plugins.Page;
-import top.imyzt.ms.${package.ModuleName}.model.${entity};
+import top.imyzt.ms.modular.${package.ModuleName}.model.${entity};
 import ${package.Service}.${table.serviceName};
 import org.springframework.beans.factory.annotation.Autowired;
 #if(${restControllerStyle})
@@ -20,7 +20,7 @@ import ${superControllerClassPackage};
  * @date: ${date}
  * @description: $!{table.comment} 前端控制器
  */
-@Api("$!{table.comment}")
+@Api(value = "$!{table.comment}", description = "$!{table.comment}")
 #if(${restControllerStyle})
 @RestController
 #else
@@ -52,7 +52,7 @@ public class ${table.controllerName} {
     @GetMapping(value = {"/${table.entityPath}", "/list"})
     public Page<${entity}> selectList(String keyword) {
         Page<${entity}> defaultPage = defaultPage();
-        Page<${entity}> page = service.selectPage(defaultPage);
+        Page<${entity}> page = ${table.entityPath}Service.selectPage(defaultPage);
         return page;
     }
 
@@ -67,7 +67,7 @@ public class ${table.controllerName} {
      */
     @GetMapping(value = "/${table.entityPath}/{id}")
     public RetResult<${entity}> selectById(@PathVariable("id") Integer id) {
-        return ok(service.selectById(id)));
+        return ok(${table.entityPath}Service.selectById(id));
     }
 
     /**
@@ -81,7 +81,7 @@ public class ${table.controllerName} {
      */
     @PostMapping(value = "/${table.entityPath}")
     public RetResult<${entity}> insert(${entity} entity) {
-        if (service.insert(entity)) {
+        if (${table.entityPath}Service.insert(entity)) {
             return ok("新增成功", entity);
         }
         return faln("新增失败");
@@ -98,7 +98,7 @@ public class ${table.controllerName} {
      */
     @DeleteMapping(value = "/${table.entityPath}/{id}")
     public RetResult<${entity}> deleteById(@PathVariable("id") Integer id) {
-        if (service.deleteById(id)) {
+        if (${table.entityPath}Service.deleteById(id)) {
             return ok("删除成功");
         }
         return faln("删除失败");
@@ -115,7 +115,7 @@ public class ${table.controllerName} {
      */
     @PutMapping(value = "/${table.entityPath}")
     public RetResult<${entity}> updateById(${entity} entity) {
-        if (service.updateById(entity)) {
+        if (${table.entityPath}Service.updateById(entity)) {
             return ok("修改成功", entity);
         }
         return faln("修改失败");
