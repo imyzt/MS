@@ -7,6 +7,7 @@ import ${pkg};
 #if(${entityLombokModel})
 
 import com.baomidou.mybatisplus.annotations.Version;
+import io.swagger.annotations.ApiModelProperty;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

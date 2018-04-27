@@ -3,6 +3,7 @@ package ${package.Controller};
 import io.swagger.annotations.Api;
 import top.imyzt.ms.core.ret.RetResult;
 import com.baomidou.mybatisplus.plugins.Page;
+import top.imyzt.ms.${package.ModuleName}.model.${entity};
 import ${package.Service}.${table.serviceName};
 import org.springframework.beans.factory.annotation.Autowired;
 #if(${restControllerStyle})
@@ -66,7 +67,7 @@ public class ${table.controllerName} {
      */
     @GetMapping(value = "/${table.entityPath}/{id}")
     public RetResult<${entity}> selectById(@PathVariable("id") Integer id) {
-        return service.selectById(id));
+        return ok(service.selectById(id)));
     }
 
     /**
@@ -76,7 +77,7 @@ public class ${table.controllerName} {
      *
      * @author: ${author}
      * @date: ${date}
-     * @param ${entity} $!{table.comment}
+     * @param entity $!{table.comment}
      */
     @PostMapping(value = "/${table.entityPath}")
     public RetResult<${entity}> insert(${entity} entity) {
@@ -97,8 +98,8 @@ public class ${table.controllerName} {
      */
     @DeleteMapping(value = "/${table.entityPath}/{id}")
     public RetResult<${entity}> deleteById(@PathVariable("id") Integer id) {
-        if (service.deleteById(entity)) {
-            return ok("删除成功", entity);
+        if (service.deleteById(id)) {
+            return ok("删除成功");
         }
         return faln("删除失败");
     }
@@ -110,7 +111,7 @@ public class ${table.controllerName} {
      *
      * @author: ${author}
      * @date: ${date}
-     * @param ${entity} $!{table.comment}
+     * @param entity $!{table.comment}
      */
     @PutMapping(value = "/${table.entityPath}")
     public RetResult<${entity}> updateById(${entity} entity) {
