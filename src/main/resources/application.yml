@@ -40,8 +40,8 @@ spring:
 
 
 mybatis-plus:
-  mapper-locations: classpath:/mapper/*Mapper.xml
-  typeAliasesPackage: top.imyzt.ms.model
+  mapper-locations: classpath:/mapper/*Mapper.xml,top.imyzt.ms.modular.*Mapper.xml
+  typeAliasesPackage: top.imyzt.ms
   global-config:
     id-type: 0  #0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
     db-column-underline: false

@@ -1,5 +1,6 @@
 package ${package.Mapper};
 
+import org.springframework.stereotype.Repository;
 import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
 
@@ -8,6 +9,7 @@ import ${superMapperClassPackage};
  * @date: ${date}
  * @description: $!{table.comment} Mapper接口
  */
+@Repository
 #if(${kotlin})
 interface ${table.mapperName} : ${superMapperClass}<${entity}>
 #else
