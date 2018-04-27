@@ -7,33 +7,33 @@ spring:
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
-    # ÏÂÃæÎªÁ¬½Ó³ØµÄ²¹³äÉèÖÃ£¬Ó¦ÓÃµ½ÉÏÃæËùÓĞÊı¾İÔ´ÖĞ
-    # ³õÊ¼»¯´óĞ¡£¬×îĞ¡£¬×î´ó
+    # ä¸‹é¢ä¸ºè¿æ¥æ± çš„è¡¥å……è®¾ç½®ï¼Œåº”ç”¨åˆ°ä¸Šé¢æ‰€æœ‰æ•°æ®æºä¸­
+    # åˆå§‹åŒ–å¤§å°ï¼Œæœ€å°ï¼Œæœ€å¤§
     druid:
       initialSize: 1
       minIdle: 3
       maxActive: 20
-      # ÅäÖÃ»ñÈ¡Á¬½ÓµÈ´ı³¬Ê±µÄÊ±¼ä
+      # é…ç½®è·å–è¿æ¥ç­‰å¾…è¶…æ—¶çš„æ—¶é—´
       maxWait: 60000
-      # ÅäÖÃ¼ä¸ô¶à¾Ã²Å½øĞĞÒ»´Î¼ì²â£¬¼ì²âĞèÒª¹Ø±ÕµÄ¿ÕÏĞÁ¬½Ó£¬µ¥Î»ÊÇºÁÃë
+      # é…ç½®é—´éš”å¤šä¹…æ‰è¿›è¡Œä¸€æ¬¡æ£€æµ‹ï¼Œæ£€æµ‹éœ€è¦å…³é—­çš„ç©ºé—²è¿æ¥ï¼Œå•ä½æ˜¯æ¯«ç§’
       timeBetweenEvictionRunsMillis: 60000
-      # ÅäÖÃÒ»¸öÁ¬½ÓÔÚ³ØÖĞ×îĞ¡Éú´æµÄÊ±¼ä£¬µ¥Î»ÊÇºÁÃë
+      # é…ç½®ä¸€ä¸ªè¿æ¥åœ¨æ± ä¸­æœ€å°ç”Ÿå­˜çš„æ—¶é—´ï¼Œå•ä½æ˜¯æ¯«ç§’
       minEvictableIdleTimeMillis: 30000
       validationQuery: select 'x'
       testWhileIdle: true
       testOnBorrow: false
       testOnReturn: false
-      # ´ò¿ªPSCache£¬²¢ÇÒÖ¸¶¨Ã¿¸öÁ¬½ÓÉÏPSCacheµÄ´óĞ¡
+      # æ‰“å¼€PSCacheï¼Œå¹¶ä¸”æŒ‡å®šæ¯ä¸ªè¿æ¥ä¸ŠPSCacheçš„å¤§å°
       poolPreparedStatements: true
       maxPoolPreparedStatementPerConnectionSize: 20
-      # ÅäÖÃ¼à¿ØÍ³¼ÆÀ¹½ØµÄfilters£¬È¥µôºó¼à¿Ø½çÃæsqlÎŞ·¨Í³¼Æ£¬'wall'ÓÃÓÚ·À»ğÇ½
+      # é…ç½®ç›‘æ§ç»Ÿè®¡æ‹¦æˆªçš„filtersï¼Œå»æ‰åç›‘æ§ç•Œé¢sqlæ— æ³•ç»Ÿè®¡ï¼Œ'wall'ç”¨äºé˜²ç«å¢™
       filters: stat,wall,slf4j
-      # Í¨¹ıconnectPropertiesÊôĞÔÀ´´ò¿ªmergeSql¹¦ÄÜ£»ÂıSQL¼ÇÂ¼
+      # é€šè¿‡connectPropertieså±æ€§æ¥æ‰“å¼€mergeSqlåŠŸèƒ½ï¼›æ…¢SQLè®°å½•
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-      # ºÏ²¢¶à¸öDruidDataSourceµÄ¼à¿ØÊı¾İ
+      # åˆå¹¶å¤šä¸ªDruidDataSourceçš„ç›‘æ§æ•°æ®
       #useGlobalDataSourceStat: true
   mvc:
-    #·ÃÎÊÒ»¸ö²»´æÔÚµÄÒ³ÃæÊ±Å×³öÒì³£,Ä¬ÈÏ¹Ø±Õ
+    #è®¿é—®ä¸€ä¸ªä¸å­˜åœ¨çš„é¡µé¢æ—¶æŠ›å‡ºå¼‚å¸¸,é»˜è®¤å…³é—­
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
@@ -43,16 +43,16 @@ mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml
   typeAliasesPackage: top.imyzt.ms.model
   global-config:
-    id-type: 0  #0:Êı¾İ¿âID×ÔÔö   1:ÓÃ»§ÊäÈëid  2:È«¾ÖÎ¨Ò»id(IdWorker)  3:È«¾ÖÎ¨Ò»ID(uuid)
+    id-type: 0  #0:æ•°æ®åº“IDè‡ªå¢   1:ç”¨æˆ·è¾“å…¥id  2:å…¨å±€å”¯ä¸€id(IdWorker)  3:å…¨å±€å”¯ä¸€ID(uuid)
     db-column-underline: false
     refresh-mapper: true
   configuration:
     map-underscore-to-camel-case: false
-    cache-enabled: true #ÅäÖÃµÄ»º´æµÄÈ«¾Ö¿ª¹Ø
-    lazyLoadingEnabled: true #ÑÓÊ±¼ÓÔØµÄ¿ª¹Ø
-    multipleResultSetsEnabled: true #¿ªÆôµÄ»°£¬ÑÓÊ±¼ÓÔØÒ»¸öÊôĞÔÊ±»á¼ÓÔØ¸Ã¶ÔÏóÈ«²¿ÊôĞÔ£¬·ñÔò°´Ğè¼ÓÔØÊôĞÔ
+    cache-enabled: true #é…ç½®çš„ç¼“å­˜çš„å…¨å±€å¼€å…³
+    lazyLoadingEnabled: true #å»¶æ—¶åŠ è½½çš„å¼€å…³
+    multipleResultSetsEnabled: true #å¼€å¯çš„è¯ï¼Œå»¶æ—¶åŠ è½½ä¸€ä¸ªå±æ€§æ—¶ä¼šåŠ è½½è¯¥å¯¹è±¡å…¨éƒ¨å±æ€§ï¼Œå¦åˆ™æŒ‰éœ€åŠ è½½å±æ€§
 
-#ÈÕÖ¾Ïà¹Ø
+#æ—¥å¿—ç›¸å…³
 logging:
   level.root: info
   level.top.imyzt.ms: debug
