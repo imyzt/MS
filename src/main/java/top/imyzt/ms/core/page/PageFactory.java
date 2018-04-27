@@ -5,6 +5,7 @@ import cn.hutool.extra.servlet.ServletUtil;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import top.imyzt.ms.core.exception.MsException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -21,6 +22,10 @@ public class PageFactory<T> {
 
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         Map<String, String> params = ServletUtil.getParamMap(request);
+
+        if (!params.containsKey("current") || !params.containsKey("size")){
+            throw new MsException("缺少分页参数");
+        }
 
         //第几页
         Integer current = Integer.valueOf(params.get("current"));
