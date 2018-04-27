@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.imyzt.ms.dao.SystemLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="top.imyzt.ms.model.SystemLog">
+        <id column="id" property="id" />
+        <result column="description" property="description" />
+        <result column="method" property="method" />
+        <result column="log_type" property="logType" />
+        <result column="request_ip" property="requestIp" />
+        <result column="exception_code" property="exceptionCode" />
+        <result column="exception_detail" property="exceptionDetail" />
+        <result column="params" property="params" />
+        <result column="user_id" property="userId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+</mapper>
