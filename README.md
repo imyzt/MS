@@ -16,6 +16,7 @@ Management-System是使用Spring Boot + Mybatis plus实现的后台管理系统�
 3. 全局异常处理及自定义异常
 4. 使用Swagger2在线接口文档
 5. 封装请求响应消息内容,自定义消息转换器
-6. 持续更新中...
+6. 修改了Mybatis-plus代码生成器模板,实现了Model,Controller,Mapper,Service代码的一键生成
+7. 持续更新中...
 
 
