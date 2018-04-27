@@ -38,11 +38,11 @@ public class ${table.controllerName} {
 #end
 
     @Autowired
-    private ${table.serviceName} service;
+    private ${table.serviceName} ${table.entityPath}Service;
 
     /**
      * <p>
-     *     获取$!{table.comment}列表 ${abc}
+     *     获取$!{table.comment}列表
      * </p>
      *
      * @author: ${author}
