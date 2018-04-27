@@ -23,6 +23,7 @@ public class UserInfoController extends BaseController{
     @Autowired
     private UserInfoService userInfoService;
 
+
     @GetMapping("user/{id}")
     public RetResult<UserInfo> selUserById(@PathVariable("id") Integer id) {
        return ok(userInfoService.selectById(id));
