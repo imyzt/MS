@@ -54,7 +54,11 @@ mybatis-plus:
 
 #日志相关
 logging:
+#TRACE < DEBUG < INFO < WARN < ERROR < FATAL
   level.root: info
   level.top.imyzt.ms: debug
   path: logs/
-  file:  ms.log
+  file:  log/ms.log
+#  pattern:
+#    console: {yyyy/MM/dd-HH:mm:ss} [%thread] %-5level %logger- %msg%n
+#    file: {yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n
