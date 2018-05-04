@@ -1,3 +1,21 @@
+ms:
+  muti-datasource:
+    muti-datasource-open: true #是否开启多数据源
+    default:  #默认的数据源
+      default-dataSource-name: dataSourceMs #默认的数据源名称
+      url: jdbc:mysql://localhost:3306/ms?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: root
+      password: root
+    slave:  #其它数据源
+      one:  #第一个
+        url: jdbc:mysql://localhost:3306/slaveone?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+        username: root
+        password: root
+      two:  #第二个
+        url: jdbc:mysql://localhost:3306/slavetwo?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+        username: root
+        password: root
+
 server:
   port: 8083
 spring:
