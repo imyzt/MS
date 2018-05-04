@@ -1,4 +1,4 @@
-package com.stylefeng.guns.core.datasource;
+package top.imyzt.ms.core.mutidatasoucre.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
 import java.sql.SQLException;
 
 /**
+ *
  * <p>数据库数据源配置</p>
- * <p>说明:这个类中包含了许多默认配置,若这些配置符合您的情况,您可以不用管,若不符合,建议不要修改本类,建议直接在"application.yml"中配置即可</p>
+ * <p>此类从Guns中而来.为多数据源使用时重用的配置</p>
+ *
  * @author stylefeng
  * @date 2017-05-21 11:18
  */
@@ -16,7 +18,7 @@ import java.sql.SQLException;
 @ConfigurationProperties(prefix = "spring.datasource")
 public class DruidProperties {
 
-    private String url = "jdbc:mysql://127.0.0.1:3306/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull";
+    private String url = "jdbc:mysql://127.0.0.1:3306/ms?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull";
 
     private String username = "root";
 
