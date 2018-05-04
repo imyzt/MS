@@ -64,8 +64,8 @@ public class MutiDataSourceExAop implements Ordered{
 
         DS dataSource = currentMethod.getAnnotation(DS.class);
         if (dataSource != null){
-            DataSourceContextHolder.setDataSourceType(dataSource.dbname());
-            log.debug("设置数据源为：" + dataSource.dbname());
+            DataSourceContextHolder.setDataSourceType(dataSource.dsname());
+            log.debug("设置数据源为：" + dataSource.dsname());
         }else {
             DataSourceContextHolder.setDataSourceType(mutiDataSourceProperties.getDefaultDataSourceName());
             log.debug("设置数据源为：默认数据源");

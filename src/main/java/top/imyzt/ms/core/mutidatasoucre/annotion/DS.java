@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 /**
  *
  * <p>
- *     多数据源标识
+ *     多数据源标识注解
  * </p>
  *
  * @author: imyzt
@@ -18,5 +18,10 @@ import java.lang.annotation.*;
 @Target({ElementType.METHOD})
 public @interface DS {
 
-    String dbname() default "";
+    /**
+     * 指定数据源的枚举类型
+     * package top.imyzt.ms.common.enumerate.DSEnum
+     * @return
+     */
+    String dsname() default "";
 }
