@@ -1,13 +1,14 @@
-package top.imyzt.ms.core.mutidatasoucre.config;
+package top.imyzt.ms.core.mutidatasoucre.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
  *
  * <p>
- *     默认多数据源配置
+ *     默认多数据源配置(必须包含一个默认数据源)
  * </p>
  *
  * @author: imyzt
@@ -21,22 +22,26 @@ public class MutiDataSourceProperties {
     /**
      * 默认的数据源名称
      */
-    private String defaultDataSourceName = "dataSourceMs";
+    @Value("${default-dataSource-name}")
+    private String defaultDataSourceName;
 
     /**
      * 默认多数据源的链接
      */
-    private String url = "jdbc:mysql://127.0.0.1:3306/mutids?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull";
+    @Value("${url}")
+    private String url;
 
     /**
      * 默认多数据源的数据库账号
      */
-    private String username = "root";
+    @Value("${username}")
+    private String username;
 
     /**
      * 默认多数据源的数据库密码
      */
-    private String password = "root";
+    @Value("${password}")
+    private String password;
 
     /**
      * 配置数据库的url,uname,pwd
