@@ -16,10 +16,13 @@ import ${superControllerClassPackage};
 #end
 
 /**
+ * <p>
+ *     $!{table.comment} 前端控制器
+ * </p>
+ *
  * @author: ${author}
  * @date: ${date}
- * @description: $!{table.comment} 前端控制器
- */
+*/
 @Api(value = "$!{table.comment}", description = "$!{table.comment}")
 #if(${restControllerStyle})
 @RestController

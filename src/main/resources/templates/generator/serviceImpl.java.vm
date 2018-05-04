@@ -8,9 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
+ *
+ * <p>
+ *     $!{table.comment} 服务实现类
+ * </p>
+ *
  * @author: ${author}
  * @date: ${date}
- * @description: $!{table.comment} 服务实现类
  */
 @Service(value = "${table.entityPath}Service")
 #if(${kotlin})

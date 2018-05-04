@@ -5,9 +5,13 @@ import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
 
 /**
+ *
+ * <p>
+ *     $!{table.comment} Mapper接口
+ * </p>
+ *
  * @author: ${author}
  * @date: ${date}
- * @description: $!{table.comment} Mapper接口
  */
 @Repository
 #if(${kotlin})
