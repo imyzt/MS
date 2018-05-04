@@ -1,10 +1,14 @@
 package top.imyzt.ms.core.ret;
 
 /**
+ *
+ * <p>
+ *     返回对象的实体类
+ * </p>
+ *
  * @author: imyzt
  * @email imyzt01@gmail.com
  * @date: 2018/4/26 13:01
- * @description: 返回对象的实体类
  */
 public class RetResult<T> {
 

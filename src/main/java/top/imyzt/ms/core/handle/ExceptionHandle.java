@@ -14,10 +14,14 @@ import top.imyzt.ms.core.ret.RetResult;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ *
+ * <p>
+ *     统一异常处理
+ * </p>
+ *
  * @author: imyzt
  * @email imyzt01@gmail.com
  * @date: 2018/4/26 14:12
- * @description: 统一异常处理
  */
 @ControllerAdvice
 public class ExceptionHandle {

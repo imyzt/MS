@@ -9,10 +9,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ *
+ * <p>
+ *     druid的配置信息
+ * </p>
+ *
  * @author: imyzt
  * @email imyzt01@gmail.com
  * @date: 2018/4/26 11:55
- * @description: druid的配置信息
  */
 @Configuration
 public class DruidConfig {

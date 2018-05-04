@@ -3,10 +3,14 @@ package top.imyzt.ms.core.exception;
 import top.imyzt.ms.core.ret.RetCode;
 
 /**
+ *
+ * <p>
+ *     自定义异常
+ * </p>
+ *
  * @author: imyzt
  * @email imyzt01@gmail.com
  * @date: 2018/4/26 14:01
- * @description: 自定义异常
  */
 public class MsException extends RuntimeException{
 

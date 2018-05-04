@@ -1,10 +1,14 @@
 package top.imyzt.ms.core.ret;
 
 /**
+ *
+ * <p>
+ *     响应码枚举
+ * </p>
+ *
  * @author: imyzt
  * @email imyzt01@gmail.com
  * @date: 2018/4/26 12:55
- * @description: 响应码枚举
  */
 public enum RetCode {
 

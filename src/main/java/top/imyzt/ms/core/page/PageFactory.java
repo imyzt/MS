@@ -11,10 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
+ *
+ * <p>
+ *     分页参数.可在此创建多个分页方式.接收不同前台发送的分页参数
+ * </p>
+ *
  * @author: imyzt
  * @email imyzt01@gmail.com
  * @date: 2018/4/26 16:27
- * @description: 分页参数.可在此创建多个分页方式.接收不同前台发送的分页参数
  */
 public class PageFactory<T> {
 

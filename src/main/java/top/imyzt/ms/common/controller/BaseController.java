@@ -6,10 +6,14 @@ import top.imyzt.ms.core.ret.RetCode;
 import top.imyzt.ms.core.ret.RetResult;
 
 /**
+ *
+ * <p>
+ *     控制层的基类
+ * </p>
+ *
  * @author: imyzt
  * @email imyzt01@gmail.com
  * @date: 2018/4/26 11:00
- * @description: 控制层的基类
  */
 public abstract class BaseController {
 

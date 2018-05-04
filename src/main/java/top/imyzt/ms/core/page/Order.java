@@ -1,10 +1,14 @@
 package top.imyzt.ms.core.page;
 
 /**
+ *
+ * <p>
+ *     数据库排序
+ * </p>
+ *
  * @author: imyzt
  * @email imyzt01@gmail.com
  * @date: 2018/4/26 16:25
- * @description: 数据库排序
  */
 public enum Order {
 

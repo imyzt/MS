@@ -14,15 +14,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *
+ * <p>
+ *     自定义消息转换器
+ *      <li> 将响应数据中出现的数据转换成没有风险的数据 </li>
+ *      <li> String null --> "" </li>
+ *      <li> Number null --> 0 </li>
+ *      <li> List<T> null --> [] </li>
+ *      <li> Boolean null --> false </li>
+ * </p>
+ *
  * @author: imyzt
  * @email imyzt01@gmail.com
  * @date: 2018/4/26 13:31
- * @description: 自定义消息转换器
- *      将响应数据中出现的数据转换成没有风险的数据
- *      String null --> ""
- *      Number null --> 0
- *      List<T> null --> []
- *      Boolean null --> false
  */
 @Configuration
 public class WebConfigurer extends WebMvcConfigurationSupport {
