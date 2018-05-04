@@ -1,42 +1,43 @@
 package top.imyzt.ms.core.mutidatasoucre.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
  *
  * <p>
- *     默认多数据源配置
+ *     测试第一个数据源
  * </p>
  *
  * @author: imyzt
  * @email imyzt01@gmail.com
- * @date: 2018/5/4 10:14
+ * @date: 2018年5月4日13:10
  */
 @Component
-@ConfigurationProperties(prefix = "ms.muti-datasource.default")
-public class MutiDataSourceProperties {
+@ConfigurationProperties(prefix = OneDataSourceProperties.DATASOURCE)
+public class OneDataSourceProperties {
+
+    public static final String DATASOURCE = "ms.muti-datasource.slave.one";
 
     /**
-     * 默认的数据源名称
+     * 第二个数据源的链接
      */
-    private String defaultDataSourceName = "dataSourceMs";
+    @Value("${url}")
+    private String url;
 
     /**
-     * 默认多数据源的链接
+     * 第二个数据源的数据库账号
      */
-    private String url = "jdbc:mysql://127.0.0.1:3306/mutids?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull";
+    @Value("${username}")
+    private String username;
 
     /**
-     * 默认多数据源的数据库账号
+     * 第二个数据源的数据库密码
      */
-    private String username = "root";
-
-    /**
-     * 默认多数据源的数据库密码
-     */
-    private String password = "root";
+    @Value("${password}")
+    private String password;
 
     /**
      * 配置数据库的url,uname,pwd
@@ -70,13 +71,5 @@ public class MutiDataSourceProperties {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getDefaultDataSourceName() {
-        return defaultDataSourceName;
-    }
-
-    public void setDefaultDataSourceName(String defaultDataSourceName) {
-        this.defaultDataSourceName = defaultDataSourceName;
     }
 }
