@@ -22,7 +22,7 @@ public class MutiDataSourceProperties {
     /**
      * 默认的数据源名称
      */
-    @Value("${default-dataSource-name}")
+    @Value("${defaultDataSourceName}")
     private String defaultDataSourceName;
 
     /**
