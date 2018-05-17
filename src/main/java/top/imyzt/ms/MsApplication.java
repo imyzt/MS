@@ -15,5 +15,5 @@ public class MsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MsApplication.class, args);
 		Console.log("MS start success");
-	}
+}
 }
