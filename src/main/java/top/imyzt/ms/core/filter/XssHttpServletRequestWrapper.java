@@ -1,6 +1,5 @@
 package top.imyzt.ms.core.filter;
 
-import cn.hutool.core.util.StrUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -16,74 +15,66 @@ import javax.servlet.http.HttpServletRequestWrapper;
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
-    HttpServletRequest orgRequest = null;
-
-    private boolean isIncludeRichText = false;
-
-    public XssHttpServletRequestWrapper(HttpServletRequest req, boolean isIncludeRichText) {
-        super(req);
-        orgRequest  = req;
-        this.isIncludeRichText = isIncludeRichText;
-    }
-
-    /**
-     * 覆盖getParameter方法，将参数名和参数值都做xss过滤.
-     * @param name
-     * @return
-     */
-    @Override
-    public String getParameter(String name) {
-
-        if (("content".equals(name)) || (name.endsWith("WithHtml")) && !isIncludeRichText){
-            return super.getParameter(name);
-        }
-
-        name = XssFilterUtil.clean(name);
-        String value = super.getParameter(name);
-        if (StrUtil.isNotBlank(value)){
-            value = XssFilterUtil.clean(value);
-        }
-        return value;
+    public XssHttpServletRequestWrapper(HttpServletRequest request) {
+        super(request);
     }
 
     @Override
     public String[] getParameterValues(String name) {
-        String[] arr = super.getParameterValues(name);
-        if (arr != null){
-            for (int i = 0; i < arr.length ; i ++){
-                arr[i]  = XssFilterUtil.clean(arr[i]);
-            }
+
+        String[] values = super.getParameterValues(name);
+
+        if (values == null) {
+            return null;
         }
-        return arr;
+
+        int len = values.length;
+
+        String[] encodedValues = new String[len];
+
+        for (int i = 0; i < len; i++){
+            encodedValues[i] = cleanXSS(values[i]);
+        }
+        return encodedValues;
+    }
+
+    @Override
+    public String getParameter(String name) {
+        String value = super.getParameter(name);
+
+        return value == null ? null : cleanXSS(value);
     }
 
     @Override
     public String getHeader(String name) {
-        name = XssFilterUtil.clean(name);
+
         String value = super.getHeader(name);
-        if (StrUtil.isNotBlank(value)){
-            value = XssFilterUtil.clean(value);
-        }
+
+        return value == null ? null : cleanXSS(value);
+    }
+
+    /**
+     * 清除包含指定标签HTML代码
+     * @param value
+     * @return
+     */
+    private String cleanXSS(String value) {
+
+        //You'll need to remove the spaces from the html entities below
+
+        value = value.replaceAll("<", "& lt;").replaceAll(">", "& gt;");
+
+        value = value.replaceAll("\\(", "& #40;").replaceAll("\\)", "& #41;");
+
+        value = value.replaceAll("'", "& #39;");
+
+        value = value.replaceAll("eval\\((.*)\\)", "");
+
+        value = value.replaceAll("[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']", "\"\"");
+
+        value = value.replaceAll("script", "");
+
         return value;
-    }
 
-    /**
-     * 获取最原始的request
-     * @return
-     */
-    public HttpServletRequest getOrgRequest() {
-        return orgRequest;
-    }
-
-    /**
-     * 获取最原始的request的静态方法
-     * @param req
-     * @return
-     */
-    public static HttpServletRequest getOrgRequest(HttpServletRequest req){
-        if (req instanceof XssHttpServletRequestWrapper){
-            return ((XssHttpServletRequestWrapper) req).getOrgRequest();
-        }
-        return req;
     }
 }

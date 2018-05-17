@@ -1,11 +1,13 @@
 package top.imyzt.ms.core.configurer;
 
+import cn.hutool.core.util.StrUtil;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import top.imyzt.ms.core.filter.XssFilter;
 
-import java.util.HashMap;
+import java.util.Arrays;
 
 /**
  * <p>
@@ -19,23 +21,31 @@ import java.util.HashMap;
 @Configuration
 public class XssFilterConfigurer {
 
+    @Value("${ms.xssFilter.urlExclusion}")
+    private String urlExclusion;
+
     @Bean
     public FilterRegistrationBean xssFilterRegistrationBean(){
-        FilterRegistrationBean filterBean = new FilterRegistrationBean();
-        filterBean.setFilter(new XssFilter());
-        filterBean.setOrder(Integer.MAX_VALUE - 1);
-        filterBean.setEnabled(true);
-        filterBean.addUrlPatterns("/*");
+        XssFilter xssFilter = new XssFilter();
+        //从yml文件中读取,排除不需要过滤的请求
+        if (StrUtil.isNotBlank(urlExclusion)){
+            String[] urls = urlExclusion.split(",");
+            xssFilter.setUrlExclusion(Arrays.asList(urls));
+        }
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(xssFilter);
 
-        HashMap<String, String> initParameters = new HashMap<>();
+        //添加过滤规则
+        filterRegistrationBean.addUrlPatterns("/*");
 
-        //不需要参数过滤的请求url
-        initParameters.put("excludes", "/favicon.ico,/image/*,/js/*,/css/*");
-        //设置富文本是否需要过滤
-        initParameters.put("isIncludeRichText", "true");
+        //default = 1000
+        filterRegistrationBean.addInitParameter("sessionStatMaxCount", "3000");
 
-        filterBean.setInitParameters(initParameters);
-        return filterBean;
+        //可以配置principalCookieName，使得druid知道指定的sessionName是谁
+        //filterRegistrationBean.addInitParameter("principalSessionName", "sessionId");
+
+        //druid 0.2.7版本开始支持profile，配置profileEnable能够监控单个url调用的sql列表。
+        filterRegistrationBean.addInitParameter("profileEnable", "true");
+        return filterRegistrationBean;
     }
 
 }
