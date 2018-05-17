@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
  * <p>
- *     继承 HttpServletRequestWrapper 将所有敏感信息全部通过XssFilterUtil的clean方法进行脱敏
+ *     继承 HttpServletRequestWrapper 将指定的标签通过转义或清除
  * </p>
  *
  * @author: imyzt
