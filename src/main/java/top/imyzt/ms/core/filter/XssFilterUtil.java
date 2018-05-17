@@ -1,13 +1,12 @@
 package top.imyzt.ms.core.filter;
 
-import com.fasterxml.jackson.core.PrettyPrinter;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 
 /**
  * <p>
- *     Xss非法标签过滤
+ *     Xss过滤工具,可以过滤标签中有例如<script></script>等敏感信息的危险字符
  * </p>
  *
  * @author: imyzt
@@ -40,9 +39,5 @@ public class XssFilterUtil {
     public static String clean(String content){
         return Jsoup.clean(content, "", WHITELIST, OUTPUT_SETTINGS);
     }
-
-
-
-
 
 }

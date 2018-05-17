@@ -1,14 +1,12 @@
 package top.imyzt.ms.core.filter;
 
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.http.HttpResponse;
 import org.apache.commons.lang.BooleanUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -16,7 +14,7 @@ import java.util.regex.Pattern;
 
 /**
  * <p>
- * <p>
+ *     Xss过滤器
  * </p>
  *
  * @author: imyzt
@@ -31,8 +29,10 @@ public class XssFilter implements Filter {
     public List<String> excludes = new ArrayList<>();
 
     /**
-     * 将需要过滤的url从initParmeter中读取出来
-     * @param config
+     * 从InitParameter中读取出配置文件
+     * isIncludeRichText(bool)表示是否需要过滤富文本内容
+     * excludes是排除不需要过滤的url
+     * @param config XssFilter配置文件
      * @throws ServletException
      */
     @Override

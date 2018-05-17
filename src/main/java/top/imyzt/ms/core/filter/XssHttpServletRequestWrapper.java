@@ -1,14 +1,13 @@
 package top.imyzt.ms.core.filter;
 
 import cn.hutool.core.util.StrUtil;
-import org.apache.catalina.startup.RealmRuleSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
  * <p>
- * <p>
+ *     继承 HttpServletRequestWrapper 将所有敏感信息全部通过XssFilterUtil的clean方法进行脱敏
  * </p>
  *
  * @author: imyzt
@@ -21,9 +20,6 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
     private boolean isIncludeRichText = false;
 
-    /**
-     *
-     */
     public XssHttpServletRequestWrapper(HttpServletRequest req, boolean isIncludeRichText) {
         super(req);
         orgRequest  = req;
