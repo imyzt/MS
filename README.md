@@ -11,6 +11,7 @@ Management-System是使用Spring Boot + Mybatis plus实现的后台管理系统�
 1. <a href="#deploy">如何部署项目</a>
 2. <a href="#run">使用main方法运行项目</a>
 3. <a href="#tomcatrun">在Tomcat环境下部署项目</a>
+4. <a href="#generator">代码生成器的使用</a>
 
 
 
@@ -65,3 +66,8 @@ Management-System是使用Spring Boot + Mybatis plus实现的后台管理系统�
 </dependency>
 ```
 * 使用 `mvn clean package -DskipTests` 将项目打包，放入`Tomcat`的 `webapps` 目录下
+
+
+## <a id="generator">代码生成器的使用</a>
+
+代码生成器依据Mybatis-Plus的Mybatis-Plus Generator修改而来，只需要创建数据库表，即可生成通用的CRUD模板，运行 `top.imyzt.ms.core.generator.MpGenerator` 即可生成对应的Controller、Entity、Service、Mapper和XML文件 
