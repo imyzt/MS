@@ -1,14 +1,14 @@
 # Management-System
 Management-System是使用SpringBoot + MybatisPlus实现的后台管理系统脚手架程序.
 
-![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)
+[![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)
 [![Bitbucket Pipelines](https://img.shields.io/badge/JAVA-1.8.0__161-brightgreen.svg)](#)
 [![Bitbucket Pipelines](https://img.shields.io/badge/maven-3.5.3-green.svg)](http://maven.apache.org/)
 [![Bitbucket Pipelines](https://img.shields.io/badge/SpringBoot-2.0.1.RELEASE-brightgreen.svg)](https://projects.spring.io/spring-boot/)
 [![Bitbucket Pipelines](https://img.shields.io/badge/Mybatis--Plus-2.2.0-blue.svg)](http://mp.baomidou.com/#/https://projects.spring.io/spring-boot/)
 
 ## Quick Start
-1. <a href="#1" target="_self">如何部署MS</a>
+1. <a href="#deploy">如何部署MS</a>
 2. 运行MS
 3. 在Tomcat环境下部署MS
 4. 
@@ -35,4 +35,4 @@ Management-System是使用SpringBoot + MybatisPlus实现的后台管理系统脚
 8. 持续更新中...
 
 
-<span id="1">bbb</span>
+<a id="deploy">bbb</a>
