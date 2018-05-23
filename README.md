@@ -1,15 +1,15 @@
 # Management-System
 Management-System是使用SpringBoot + MybatisPlus实现的后台管理系统脚手架程序.
 
-[![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)
+![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)
 [![Bitbucket Pipelines](https://img.shields.io/badge/JAVA-1.8.0__161-brightgreen.svg)](#)
 [![Bitbucket Pipelines](https://img.shields.io/badge/maven-3.5.3-green.svg)](http://maven.apache.org/)
 [![Bitbucket Pipelines](https://img.shields.io/badge/SpringBoot-2.0.1.RELEASE-brightgreen.svg)](https://projects.spring.io/spring-boot/)
 [![Bitbucket Pipelines](https://img.shields.io/badge/Mybatis--Plus-2.2.0-blue.svg)](http://mp.baomidou.com/#/https://projects.spring.io/spring-boot/)
 
 ## Quick Start
-1. <a href="#deploy">如何部署MS</a>
-2. 运行MS
+1. <a href="#deploy">如何部署项目</a>
+2. <a href="#run">运行项目</a>
 3. 在Tomcat环境下部署MS
 4. 
 
@@ -39,9 +39,17 @@ Management-System是使用SpringBoot + MybatisPlus实现的后台管理系统脚
 
 ### <a id="deploy">部署</a>
 1. 环境要求
-  MySQL5.7+
-  IDEA
+
+    MySQL5.7+
+    IDEA
 2. clone代码到本地
-  git clone https://github.com/imyzt/MS.git
+
+    git clone https://github.com/imyzt/MS.git
 3. 使用 IDEA导入项目
+
   ![项目截图](http://wx4.sinaimg.cn/mw690/0060lm7Tly1frld2t8tdzj31hc0t4wiq.jpg)
+ 
+ 
+### <a id="run">运行</a>
+
+    打开top.imyzt.ms包的MSApplication.java，右击main方法运行项目
