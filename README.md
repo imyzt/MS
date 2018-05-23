@@ -45,22 +45,13 @@ Management-System是使用SpringBoot + MybatisPlus实现的后台管理系统脚
     git clone https://github.com/imyzt/MS.git
 3. 使用 IDEA导入项目
 
-
   ![项目截图](http://wx4.sinaimg.cn/mw690/0060lm7Tly1frld2t8tdzj31hc0t4wiq.jpg)
  
  
 ### <a id="run">运行</a>
 
-    打开top.imyzt.ms包的MSApplication.java，右击main方法运行项目
-
-![项目截图](http://wx4.sinaimg.cn/mw690/0060lm7Tly1frld2t8tdzj31hc0t4wiq.jpg "项目截图")
-
- 
- 
-## <a id="run">运行</a>
-
-    打开top.imyzt.ms包的MSApplication.java，右击main方法运行项目
-
+    打开top.imyzt.ms包的MSApplication.java，右击main方法运行项目 
+    
 
 
 ## <a id="tomcatrun">在Tomcat环境下部署项目</a>
