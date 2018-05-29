@@ -52,7 +52,7 @@ public class ${table.controllerName} {
      * @date: ${date}
      * @param keyword 查询参数
      */
-    @GetMapping(value = {"/${table.entityPath}", "/list"})
+    @GetMapping(value = {"/", "/list"})
     public Page<${entity}> selectList(String keyword) {
         Page<${entity}> defaultPage = defaultPage();
         Page<${entity}> page = ${table.entityPath}Service.selectPage(defaultPage);
@@ -68,7 +68,7 @@ public class ${table.controllerName} {
      * @date: ${date}
      * @param id 编号
      */
-    @GetMapping(value = "/${table.entityPath}/{id}")
+    @GetMapping(value = "/{id}")
     public RetResult<${entity}> selectById(@PathVariable("id") Integer id) {
         return ok(${table.entityPath}Service.selectById(id));
     }
@@ -82,7 +82,7 @@ public class ${table.controllerName} {
      * @date: ${date}
      * @param ${table.entityPath} $!{table.comment}
      */
-    @PostMapping(value = "/${table.entityPath}")
+    @PostMapping(value = "/")
     public RetResult<${entity}> insert(${entity} ${table.entityPath}) {
         if (${table.entityPath}Service.insert(${table.entityPath})) {
             return ok("新增成功", ${table.entityPath});
@@ -99,7 +99,7 @@ public class ${table.controllerName} {
      * @date: ${date}
      * @param id 编号
      */
-    @DeleteMapping(value = "/${table.entityPath}/{id}")
+    @DeleteMapping(value = "/{id}")
     public RetResult<${entity}> deleteById(@PathVariable("id") Integer id) {
         if (${table.entityPath}Service.deleteById(id)) {
             return ok("删除成功");
@@ -116,7 +116,7 @@ public class ${table.controllerName} {
      * @date: ${date}
      * @param ${table.entityPath} $!{table.comment}
      */
-    @PutMapping(value = "/${table.entityPath}")
+    @PutMapping(value = "/")
     public RetResult<${entity}> updateById(${entity} ${table.entityPath}) {
         if (${table.entityPath}Service.updateById(${table.entityPath})) {
             return ok("修改成功", ${table.entityPath});

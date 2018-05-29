@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,15 +28,17 @@ public class MpGenerator {
      * MySQL 自定义模板生成演示
      * </p>
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+
+
 
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
-        mpg.setGlobalConfig(globalConfig("D:\\y\\MS\\src\\main\\java", "imyzt"));
+        mpg.setGlobalConfig(globalConfig(getPath(), "imyzt"));
         // 数据源配置
         mpg.setDataSource(dataSourceConfig());
         // 策略配置
-        mpg.setStrategy(strategyConfig());
+        mpg.setStrategy(strategyConfig(new String[]{"sys_user"}));
         // 包配置
         mpg.setPackageInfo(packageConfig("top.imyzt.ms.modular", "system"));
         //自定义模板配置
@@ -47,6 +50,22 @@ public class MpGenerator {
         mpg.execute();
         // 打印注入设置
         System.err.println(mpg.getCfg().getMap().get("abc"));
+    }
+
+    /**
+     * 找到项目所在的路径
+     * @return
+     * @throws Exception
+     */
+    private static String getPath() throws FileNotFoundException {
+        String path = Class.class.getResource("/").getPath();
+
+        int target = path.indexOf("target");
+        if (target == -1){
+            throw new FileNotFoundException("未找到classpath路径");
+        }
+        String classpath = path.substring(0, target).concat("src\\main\\java\\");
+        return classpath;
     }
 
     /**
@@ -84,7 +103,7 @@ public class MpGenerator {
         gc.setBaseColumnList(false);// XML columList
         gc.setAuthor(author);
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
-        // gc.setMapperName("%sDao");
+        // gc.setMapperName("%scDao");
         // gc.setXmlName("%sDao");
         // gc.setServiceName("MP%sService");
         // gc.setServiceImplName("%sServiceDiy");
@@ -108,13 +127,14 @@ public class MpGenerator {
 
     /**
      * 策略配置
+     * @param tabs 需要生成的表
      * @return
      */
-    private static StrategyConfig strategyConfig(){
+    private static StrategyConfig strategyConfig(String[] tabs){
         StrategyConfig strategy = new StrategyConfig();
-        //strategy.setTablePrefix("beautiful_");// 此处可以修改为您的表前缀
+        strategy.setTablePrefix("beautiful_");// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "sys_user" }); // 需要生成的表
+        strategy.setInclude(tabs); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 字段名生成策略
         strategy.setNaming(NamingStrategy.underline_to_camel);
