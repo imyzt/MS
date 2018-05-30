@@ -25,6 +25,14 @@
 	</properties>
 
 	<dependencies>
+
+        <!-- 打成war的时候打开注释，本地开发用内嵌tomcat时加上注释 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
