@@ -60,6 +60,7 @@ spring:
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
+    static-locations: classpath:static/
   #redis配置信息
   redis:
     database: 0
@@ -76,6 +77,13 @@ spring:
     multipart:
       max-file-size: 10MB #文件上传限制
       max-request-size: 10MB #最大请求
+  mail:
+    default-encoding: UTF-8
+    protocol: smtp
+    host: smtp.sina.cn
+    port: 25
+    password: ****** # 自己的密码或授权码
+    username: ****** # 自己的邮箱
 
 # mybatis-plus配置信息
 mybatis-plus:
