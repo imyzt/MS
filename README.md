@@ -43,14 +43,18 @@ Management-System是使用SpringBoot + MybatisPlus实现的后台管理系统脚
 ## <a id="deploy">部署</a>
 1. 环境要求
 
-    MySQL5.7+ <br>
-    IDEA
+    MySQL5.7+  
+    IDEA  
+    JAVA 1.8+  
+    MAVEN 3.5+  
+    
 2. clone代码到本地
 
-    git clone https://github.com/imyzt/MS.git
+    ```git clone https://github.com/imyzt/MS.git```  
+    
 3. 使用 IDEA导入项目
 
-  ![项目截图](http://wx4.sinaimg.cn/mw690/0060lm7Tly1frld2t8tdzj31hc0t4wiq.jpg)
+  ![项目截图](https://s1.ax2x.com/2018/05/30/7dMDS.png)
  
  
 ## <a id="run">运行</a>
