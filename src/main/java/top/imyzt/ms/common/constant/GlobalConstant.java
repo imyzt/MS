@@ -1,4 +1,4 @@
-package top.imyzt.ms.core.constant;
+package top.imyzt.ms.common.constant;
 
 /**
  * <p>
