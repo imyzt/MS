@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import top.imyzt.ms.common.model.UploadFile;
-import top.imyzt.ms.core.constant.GlobalConstant;
+import top.imyzt.ms.common.constant.GlobalConstant;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -64,12 +64,12 @@ public class UploadActionUtil {
                         long fileSize = file.getSize();
 
                         //获取文件存放全路径
-                        File uploadFileSavePath = savePath(UUIDName);
+                        String uploadFileSavePath = savePath(UUIDName);
                         //将文件转存至指定目录
-                        file.transferTo(uploadFileSavePath);
+                        file.transferTo(new File(uploadFileSavePath));
 
                         //将文件信息加入到List用于后续操作
-                        UploadFile uploadFile = new UploadFile(RandomUtil.randomInt(10_000, 100_000), fileName, fullName, UUIDName, suffix, fileSize);
+                        UploadFile uploadFile = new UploadFile(RandomUtil.randomInt(10_000, 100_000), fileName, fullName, UUIDName, suffix, fileSize, uploadFileSavePath);
                         list.add(uploadFile);
                     }
 
@@ -85,7 +85,7 @@ public class UploadActionUtil {
      * @param uuidName 文件UUID名称
      * @return
      */
-    private static File savePath(String uuidName){
+    private static String savePath(String uuidName){
         //文件存放文件夹路径
         String floderName = GlobalConstant.UPLOAD_FILE_SAVE_PATH + File.separator + floderName();
         File savePath = new File(floderName);
@@ -95,7 +95,7 @@ public class UploadActionUtil {
             savePath.mkdirs();
         }
 
-        return new File(floderName + File.separator + uuidName);
+        return floderName + File.separator + uuidName;
     }
 
     /**
