@@ -43,6 +43,12 @@ public class UploadFile implements Serializable{
      */
     private long fileSize;
 
+    /**
+     * 文件存储路径 (可用于后续存储数据库之后回显) <br\>
+     * UPLOAD_FILE_SAVE_PATH + 年 + 月 + 日 + UUIDName
+     */
+    private transient String fileSavePath;
+
     public Integer getId() {
         return id;
     }
@@ -50,13 +56,14 @@ public class UploadFile implements Serializable{
     public UploadFile() {
     }
 
-    public UploadFile(Integer id, String fileName, String fullName, String UUIDName, String suffix, long fileSize) {
+    public UploadFile(Integer id, String fileName, String fullName, String UUIDName, String suffix, long fileSize, String fileSavePath) {
         this.id = id;
         this.fileName = fileName;
         this.fullName = fullName;
         this.UUIDName = UUIDName;
         this.suffix = suffix;
         this.fileSize = fileSize;
+        this.fileSavePath = fileSavePath;
     }
 
     @Override
@@ -68,6 +75,7 @@ public class UploadFile implements Serializable{
                 ", UUIDName='" + UUIDName + '\'' +
                 ", suffix='" + suffix + '\'' +
                 ", fileSize=" + fileSize +
+                ", fileSavePath='" + fileSavePath + '\'' +
                 '}';
     }
 
@@ -83,7 +91,8 @@ public class UploadFile implements Serializable{
         if (!fileName.equals(that.fileName)) return false;
         if (!fullName.equals(that.fullName)) return false;
         if (!UUIDName.equals(that.UUIDName)) return false;
-        return suffix.equals(that.suffix);
+        if (!suffix.equals(that.suffix)) return false;
+        return fileSavePath.equals(that.fileSavePath);
     }
 
     @Override
@@ -94,6 +103,7 @@ public class UploadFile implements Serializable{
         result = 31 * result + UUIDName.hashCode();
         result = 31 * result + suffix.hashCode();
         result = 31 * result + (int) (fileSize ^ (fileSize >>> 32));
+        result = 31 * result + fileSavePath.hashCode();
         return result;
     }
 
@@ -139,5 +149,13 @@ public class UploadFile implements Serializable{
 
     public void setFileSize(long fileSize) {
         this.fileSize = fileSize;
+    }
+
+    public String getFileSavePath() {
+        return fileSavePath;
+    }
+
+    public void setFileSavePath(String fileSavePath) {
+        this.fileSavePath = fileSavePath;
     }
 }
