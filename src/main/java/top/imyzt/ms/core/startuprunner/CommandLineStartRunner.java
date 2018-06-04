@@ -1,6 +1,7 @@
 package top.imyzt.ms.core.startuprunner;
 
-import cn.hutool.core.lang.Console;
+import cn.hutool.log.Log;
+import cn.hutool.log.LogFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,8 @@ public class CommandLineStartRunner implements CommandLineRunner{
         /**
          * 系统启动时需要加载的资源.可以修改Order的value修改启动顺序,越小优先级越高.
          */
-        Console.log("CommandLineRunner启动,Order = 3");
+
+        Log log = LogFactory.get();
+        log.info("CommandLineRunner启动,Order = 3");
     }
 }

@@ -1,6 +1,7 @@
 package top.imyzt.ms.core.startuprunner;
 
-import cn.hutool.core.lang.Console;
+import cn.hutool.log.Log;
+import cn.hutool.log.LogFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -25,6 +26,7 @@ public class ApplicationStartRunner implements ApplicationRunner {
 
         //加载资源可放在此处
 
-        Console.log("系统加载中,order = 2");
+        Log log = LogFactory.get();
+        log.info("系统加载中,order = 2");
     }
 }

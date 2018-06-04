@@ -1,6 +1,7 @@
 package top.imyzt.ms;
 
-import cn.hutool.core.lang.Console;
+import cn.hutool.log.Log;
+import cn.hutool.log.LogFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,6 +15,7 @@ public class MsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MsApplication.class, args);
-		Console.log("MS start success");
+		Log log = LogFactory.get();
+		log.info("MS START SUCCESS");
 }
 }
