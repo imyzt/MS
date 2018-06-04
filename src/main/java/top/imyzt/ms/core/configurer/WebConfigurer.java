@@ -1,8 +1,5 @@
 package top.imyzt.ms.core.configurer;
 
-import cn.hutool.log.Log;
-import cn.hutool.log.LogFactory;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
@@ -12,13 +9,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-import top.imyzt.ms.core.ret.RetCode;
-import top.imyzt.ms.core.ret.RetResult;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import top.imyzt.ms.core.interceptor.AuthorizedInterceptor;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -101,47 +92,14 @@ public class WebConfigurer extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
 
-        Log log = LogFactory.get();
-
         registry.addInterceptor(
-                new HandlerInterceptorAdapter() {
-                    @Override
-                    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-                        String ization = request.getHeader("ization");
-                        if (IZATION.equals(ization)){
-                            return true;
-                        }else {
-                            RetResult<String> result = new RetResult<>();
-                            String falnMsg = "签名认证失败";
-                            result.setCode(RetCode.UNAUTHORIZED).setMsg(falnMsg);
-                            responseResult(response, result);
-                            log.info("接口: [".concat(request.getRequestURI()).concat("] ").concat(falnMsg));
-                            return false;
-                        }
-                    }
+                // 自定义拦截器,需要特定要求可重写
+                new AuthorizedInterceptor(){
+
                 }
-                /**
-                 *  /**表示拦截所有请求.
-                 *  此处仅作为WebConfigurer中配置拦截器的演示.
-                 */
+        //拦截器拦截指定URL, /**拦截所有
         ).addPathPatterns("/system/sysUser/*");
     }
 
-    /**
-     * 封装 response 返回的消息
-     * @param resp
-     * @param ret
-     */
-    private static void responseResult(HttpServletResponse resp, RetResult<String> ret){
-        Log log = LogFactory.get();
 
-        resp.setCharacterEncoding("UTF-8");
-        resp.setHeader("Content-type", "application/json;charset=UTF-8");
-        resp.setStatus(200);
-        try {
-            resp.getWriter().write(JSON.toJSONString(ret, SerializerFeature.WriteMapNullValue));
-        } catch (IOException e) {
-            log.error(e.getMessage());
-        }
-    }
 }
