@@ -25,6 +25,7 @@ import java.util.*;
  */
 public class UploadActionUtil {
 
+    private UploadActionUtil(){}
 
     /**
      * 上传文件工具类,将文件存入指定路径下
